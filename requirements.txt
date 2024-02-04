@@ -1,0 +1,6 @@
+numpy
+pyarrow
+pandas
+transformers
+accelerate
+openpyxl
