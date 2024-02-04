@@ -1,0 +1,42 @@
+<!-- list_media_files.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Files</title>
+</head>
+<body>
+
+    <form action="" method="post" id="llmform">
+        {% csrf_token %}
+        {% for name, html_table in dfs_html.items %}
+            <div class="container">
+                <input type="checkbox" name="files" value="{{ name }}" id="{{ name }}_{{ forloop.counter }}" onclick="checkSingle(this)">
+                <label for="{{ name }}_{{ forloop.counter }}">{{ name }}</label>
+                
+                <h2>{{ name }}</h2>
+                {{ html_table|safe }}
+            </div>
+        {% endfor %}
+        <!-- You can add a submit button here if you need to post the form -->
+
+    
+        <div>
+            <label for="promptbox">Write your prompt here</label>
+            <textarea rows="20", cols="150" id="promptbox", name="prompt"></textarea>
+        </div>
+        <input type="submit" text="Submit" onsubmit="">
+    </form>
+</body>
+<script>
+
+function checkSingle(checkbox) {
+    var checkboxes = document.getElementById('llmform').getElementsByTagName('input');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] !== checkbox) checkboxes[i].checked = false;
+    }
+}
+</script>
+
+</html>
+
