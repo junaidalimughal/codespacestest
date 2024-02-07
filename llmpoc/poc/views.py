@@ -13,8 +13,11 @@ from llmpoc.settings import MEDIA_URL
 from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 import pandas as pd
-from execute_script import read_file
+
+from django.http import HttpResponseRedirect
+import os
 
 class FileUploadView(FormView):
     template_name = 'poc/upload.html'
@@ -36,12 +39,35 @@ class UploadSuccessView(TemplateView):
     template_name = "poc/upload_success.html"
 
 class RunLLMView(View):
-    template_name = "poc/runllm.html"
+    template_name = "poc/post_prompt.html"
 
     @method_decorator(csrf_exempt)
     def post(self, request, *args, **kwargs):
-        
+        selected_files = request.POST.getlist("files")
         prompt = request.POST.get("prompt")
+        
+        response = """
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("media/data_df.csv")
+print("dataframe printed from actual script is", df)"""
+        print(f"selected File is ->  {selected_files}")
+        print(f"And prompt is -> {prompt}")
+
+        
+        if os.path.exists("execute_script.py"):
+            os.remove("execute_script.py")
+        with open("execute_script.py", "w") as script_file_pointer:
+            response_lines = response.split("\n")
+            for line in response_lines:
+                script_file_pointer.write(line)
+                script_file_pointer.write("\n")
+        
+        with open("execute_script.py") as script_file:
+            exec(script_file.read())
+
+        return HttpResponseRedirect(reverse("upload_file"))
 
 class ListMediaFilesView(TemplateView):
     template_name = "poc/post_prompt.html"
@@ -59,8 +85,6 @@ class ListMediaFilesView(TemplateView):
             else:
                 df = pd.read_excel(file_name)
 
-            local_df = read_file()
-            print(local_df)
             file_name = file_name.split("/")[-1]
             dfs_html[f"{file_name}"] = df.head().to_html(classes="table table-striped", index=False)
             print(df.head().to_html(classes="table table-striped", index=False))

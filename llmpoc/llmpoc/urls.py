@@ -19,6 +19,7 @@ from django.urls import path
 from poc import views
 
 urlpatterns = [
+    path("processllm/", views.RunLLMView.as_view(), name="precessllm"),
     path("admin/", admin.site.urls),
     path('upload/', views.FileUploadView.as_view(), name='upload_file'),
     path("upload/success/", views.UploadSuccessView.as_view(), name="upload_success"),
