@@ -62,6 +62,10 @@
 form {
     margin-bottom: 20px;
   }
+
+  .fileform {
+    width: 80%;
+  }
   
   /* Style the file input */
   input[type="file"] {
@@ -103,6 +107,9 @@ form {
     margin: 20px 0; /* Adds margin at the top and bottom */
   }
   
+  .fieldform {
+    margin-left: 50px;
+  }
   /* Updated Input field styling */
   .input-field {
     width: 80%; /* Occupies 80% of the input box width */

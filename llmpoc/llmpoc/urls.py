@@ -19,6 +19,8 @@ from django.urls import path
 from poc import views
 
 urlpatterns = [
+    path("api/upload/", views.FileUploadAPIView.as_view(), name="upload-file-api"),
+    path("api/processllm/", views.ProcessLLMAPI.as_view(), name="process-mixtral-api"),
     path("processllm/", views.RunLLMView.as_view(), name="precessllm"),
     path("admin/", admin.site.urls),
     path('upload/', views.FileUploadView.as_view(), name='upload_file'),

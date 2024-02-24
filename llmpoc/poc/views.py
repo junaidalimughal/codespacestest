@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 # views.py
 
+
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.views import View
@@ -16,8 +17,64 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 import pandas as pd
 
+from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+from rest_framework import serializers
+from rest_framework.views import APIView
+from .serializers import UploadedFileSerializer
+
 from django.http import HttpResponseRedirect
 import os
+
+class FileUploadAPIView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+    
+    def post(self, request, *args, **kwargs):
+        file_serializer = UploadedFileSerializer(data=request.data)
+        
+        if file_serializer.is_valid():
+            file_serializer.save()
+
+            return Response(file_serializer.data, status=201)
+
+class TestAPIView(APIView):
+    parser_classes = (JSONParser)
+
+    def post(self, request, *args, **kwargs):
+        prompt_value = request.POST.get("prompt")
+        print(f"Prompt value is -> {prompt_value}")
+
+        return Response("Prompt reached on the system.")
+
+class ProcessLLMAPI(APIView):
+    parser_classes = (JSONParser)
+
+    def post(self, request, *args, **kawrgs):
+        selected_files = request.POST.getlist("files")
+        prompt = request.POST.get("prompt")
+        
+        response = """
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("media/data_df.csv")
+print("dataframe printed from actual script is", df)"""
+        print(f"selected File is ->  {selected_files}")
+        print(f"And prompt is -> {prompt}")
+
+        
+        if os.path.exists("execute_script.py"):
+            os.remove("execute_script.py")
+        with open("execute_script.py", "w") as script_file_pointer:
+            response_lines = response.split("\n")
+            for line in response_lines:
+                script_file_pointer.write(line)
+                script_file_pointer.write("\n")
+        
+        with open("execute_script.py") as script_file:
+            exec(script_file.read())
+
+        return HttpResponseRedirect(reverse("upload_file"))
 
 class FileUploadView(FormView):
     template_name = 'poc/upload.html'

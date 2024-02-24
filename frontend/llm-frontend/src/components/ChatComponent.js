@@ -15,7 +15,6 @@ function ChatComponent() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatHistory]);
 
-
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -28,14 +27,16 @@ function ChatComponent() {
     if (inputValue.trim()) {
       try {
         // Replace 'YOUR_TEXT_ENDPOINT_URL' with your actual API endpoint for text messages
-        const response = await axios.post('YOUR_TEXT_ENDPOINT_URL', { message: inputValue });
+        console.log("calling the method.")
+        const response = await axios.post('127.0.0.1:8000/api/processllm/', { message: inputValue });
+        console.log(response)
         setChatHistory([...chatHistory, response.data]);
         setInputValue(''); // Clear the input box after submission
       } catch (error) {
         setError(error);
       }
     }
-
+      
     // Logic to send file
     if (selectedFile) {
       const formData = new FormData();
@@ -43,7 +44,7 @@ function ChatComponent() {
 
       try {
         // Replace 'YOUR_FILE_ENDPOINT_URL' with your actual API endpoint for file uploads
-        const response = await axios.post('YOUR_FILE_ENDPOINT_URL', formData, {
+        const response = await axios.post('127.0.0.1:8000/api/processllm/', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -88,9 +89,9 @@ function ChatComponent() {
 
   return (
     <div>
-      <form onSubmit={handleSubmitFile}>
-        <input type="file" onChange={handleFileChange} />
-        <button type="submit">Upload File</button>
+      <form class="fileform" onSubmit={handleSubmitFile}>
+        <input id="fileformfield" type="file" onChange={handleFileChange} />
+        <button id="fileformbutton" type="submit">Upload File</button>
       </form>
       <h1>Chat with us</h1>
       {isLoading && <p>Loading...</p>}
@@ -101,10 +102,11 @@ function ChatComponent() {
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <form onSubmit={handleSubmit}>
+      <form class="fieldform" onSubmit={handleSubmit}>
         <input
-          class=".input-field"
+          class="input-field"
           type="text"
+          id="prompt"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Type your message here..."
