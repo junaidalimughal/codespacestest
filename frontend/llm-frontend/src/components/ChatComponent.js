@@ -24,22 +24,30 @@ function ChatComponent() {
     setIsLoading(true);
 
     // Logic to send text input
-    if (inputValue.trim()) {
-      try {
-        // Replace 'YOUR_TEXT_ENDPOINT_URL' with your actual API endpoint for text messages
-        console.log("calling the method.")
-        const fileName = selectedFile ? selectedFile.name : ''
-        console.log(inputValue)
-        console.log(fileName)
-        const response = await axios.post('http://127.0.0.1:8000/api/processllm/', { message: inputValue, fileName: fileName});
-        console.log(response)
-        setChatHistory([...chatHistory, response.data]);
-        setInputValue(''); // Clear the input box after submission
-      } catch (error) {
-        setError(error);
-      }
-    }
+
+    try {
+      // Replace 'YOUR_TEXT_ENDPOINT_URL' with your actual API endpoint for text messages
+      console.log("calling the method.")
+      const fileName = selectedFile ? selectedFile.name : ''
+      console.log(inputValue)
+      console.log(fileName)
       
+      console.log("chat history length is");
+      console.log(chatHistory.length)
+      setChatHistory(prevChatHistory => [...prevChatHistory, {text: inputValue, textType: "user"}]);
+
+      const response = await axios.post('http://127.0.0.1:8000/api/processllm/', { message: inputValue, fileName: fileName});
+      console.log(response)
+      setChatHistory(prevChatHistory => [...prevChatHistory, {text: response.data.message, textType: "System"}]);
+      setInputValue(''); // Clear the input box after submission
+      
+      console.log("Chat history is -=> ")
+      console.log(chatHistory);
+    } catch (error) {
+      setError(error);
+    }
+    
+    /*
     // Logic to send file
     if (selectedFile) {
       const formData = new FormData();
@@ -57,7 +65,7 @@ function ChatComponent() {
       } catch (error) {
         setError(error);
       }
-    }
+    }*/
 
     setIsLoading(false);
   };
@@ -77,7 +85,7 @@ function ChatComponent() {
           'Content-Type': 'multipart/form-data',
         },
       });
-      setChatHistory([...chatHistory, response.data]);
+      //setChatHistory([...chatHistory, response.data]);
       //setSelectedFile(null); // Clear the selected file after submission
     } catch (error) {
       setError(error);
@@ -93,18 +101,29 @@ function ChatComponent() {
   return (
     <div>
       <form class="fileform" onSubmit={handleSubmitFile}>
-        <input id="fileformfield" type="file" onChange={handleFileChange} />
+        <input id="fileformfield" type="file" onChange={handleFileChange}/>
         <button id="fileformbutton" type="submit">Upload File</button>
       </form>
       <h1>Chat with us</h1>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       <div className="chat-container">
-        {chatHistory.map((message, index) => (
-          <div key={index}>{message.text}</div>
-        ))}
-        <div ref={messagesEndRef} />
+        {chatHistory.length > 0 ? (
+          chatHistory.map((message, index) => <div key={index}>
+            {message.textType == "user" ? <p>{message.text}</p> : 
+            
+            <div>
+              <a href={message.text}>Download Analysis File</a>
+              <table> 
+
+              </table>
+            </div>
+            } </div>)
+          ) : (
+              <p>No messages yet</p>
+        )}        
       </div>
+
       <form class="fieldform" onSubmit={handleSubmit}>
         <input
           class="input-field"
