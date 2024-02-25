@@ -28,7 +28,10 @@ function ChatComponent() {
       try {
         // Replace 'YOUR_TEXT_ENDPOINT_URL' with your actual API endpoint for text messages
         console.log("calling the method.")
-        const response = await axios.post('127.0.0.1:8000/api/processllm/', { message: inputValue });
+        const fileName = selectedFile ? selectedFile.name : ''
+        console.log(inputValue)
+        console.log(fileName)
+        const response = await axios.post('http://127.0.0.1:8000/api/processllm/', { message: inputValue, fileName: fileName});
         console.log(response)
         setChatHistory([...chatHistory, response.data]);
         setInputValue(''); // Clear the input box after submission
@@ -69,13 +72,13 @@ function ChatComponent() {
 
     try {
       // Replace 'YOUR_FILE_ENDPOINT_URL' with your actual API endpoint
-      const response = await axios.post('YOUR_FILE_ENDPOINT_URL', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/api/upload/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       setChatHistory([...chatHistory, response.data]);
-      setSelectedFile(null); // Clear the selected file after submission
+      //setSelectedFile(null); // Clear the selected file after submission
     } catch (error) {
       setError(error);
     } finally {

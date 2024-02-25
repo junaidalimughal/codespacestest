@@ -15,6 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from poc import views
 
@@ -26,5 +28,5 @@ urlpatterns = [
     path('upload/', views.FileUploadView.as_view(), name='upload_file'),
     path("upload/success/", views.UploadSuccessView.as_view(), name="upload_success"),
     path("runllm", views.ListMediaFilesView.as_view(), name="list_media_files"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

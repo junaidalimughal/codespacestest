@@ -17,11 +17,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 import pandas as pd
 
+from .apps import latest_file
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework import serializers
 from rest_framework.views import APIView
 from .serializers import UploadedFileSerializer
+from .models import GeneratedFile, UploadedFile
+from django.core.files.base import ContentFile
 
 from django.http import HttpResponseRedirect
 import os
@@ -34,8 +37,12 @@ class FileUploadAPIView(APIView):
         
         if file_serializer.is_valid():
             file_serializer.save()
-
-            return Response(file_serializer.data, status=201)
+            print("file name is -> ", file_serializer.data)
+            latest_file = file_serializer.data
+            
+            return Response({"data": file_serializer.data, "message": "File Uploaded successfully."}, status=201)
+        else:
+            return Response({"message": "File Uploaded Failed."}, status=500)
 
 class TestAPIView(APIView):
     parser_classes = (JSONParser)
@@ -47,35 +54,47 @@ class TestAPIView(APIView):
         return Response("Prompt reached on the system.")
 
 class ProcessLLMAPI(APIView):
-    parser_classes = (JSONParser)
 
     def post(self, request, *args, **kawrgs):
-        selected_files = request.POST.getlist("files")
-        prompt = request.POST.get("prompt")
+        print(request)
+        print(request.POST.__dict__)
         
+        prompt = request.data.get("message")
+        fileName = request.data.get("fileName")
+        print("File path is -=>", latest_file)
+
+        last_file = UploadedFile.objects.all().last()
+        print(last_file.file)
+        print(last_file.file.name)
+
+        df = pd.read_csv(f"media/{last_file.file}")
+        
+        local_namespace = {"df":df}
         response = """
 import pandas as pd
 import numpy as np
 
 df = pd.read_csv("media/data_df.csv")
-print("dataframe printed from actual script is", df)"""
-        print(f"selected File is ->  {selected_files}")
-        print(f"And prompt is -> {prompt}")
+print(df.columns)
+print(df)
+"""
+        exec(response, globals(), local_namespace)
+        local_df = local_namespace["df"]
+        new_file_name = f"generated_{fileName}"
 
+        #local_df.to_csv(f"media/temp_files/{new_file_name}.csv", index=False)
         
-        if os.path.exists("execute_script.py"):
-            os.remove("execute_script.py")
-        with open("execute_script.py", "w") as script_file_pointer:
-            response_lines = response.split("\n")
-            for line in response_lines:
-                script_file_pointer.write(line)
-                script_file_pointer.write("\n")
+        document = GeneratedFile()
+        print("Attempting to create the file.")
+        document.file.save(new_file_name, ContentFile(local_df.to_csv(index=False)))
+        print("File saved.")
         
-        with open("execute_script.py") as script_file:
-            exec(script_file.read())
+        document.save()
+        print("Document saved.")
 
-        return HttpResponseRedirect(reverse("upload_file"))
-
+        file_url = request.build_absolute_uri(document.file.url)
+        return Response(data={"message": f"success and {file_url}"})
+        
 class FileUploadView(FormView):
     template_name = 'poc/upload.html'
     form_class = UploadFileForm
@@ -101,6 +120,7 @@ class RunLLMView(View):
     @method_decorator(csrf_exempt)
     def post(self, request, *args, **kwargs):
         selected_files = request.POST.getlist("files")
+        
         prompt = request.POST.get("prompt")
         
         response = """
