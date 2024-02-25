@@ -63,8 +63,24 @@ form {
     margin-bottom: 20px;
   }
 
+  .chat-text {
+    align-items: center;
+  }
+
+  .chat-interaction {
+    border-color: #007bff;
+    border-width: 2px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+  }
+
   .fileform {
-    width: 80%;
+    margin-left: 20px;
+    width: 90%;
+  }
+
+  .top-div {
+    margin-top: 40px;
   }
   
   /* Style the file input */
@@ -112,11 +128,48 @@ form {
   }
   /* Updated Input field styling */
   .input-field {
-    width: 80%; /* Occupies 80% of the input box width */
+    width: 90%; /* Occupies 80% of the input box width */
     padding: 10px;
     margin-right: 10px; /* Adds space between the input field and the button */
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px; /* Increases font size for better readability */
+  }
+  
+  .styled-table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin: 25px 0; /* Add some margin around the table */
+    font-size: 0.9em; /* Adjust font size */
+    font-family: sans-serif; /* Use a sans-serif font */
+    min-width: 400px; /* Minimum width */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* Add some shadow for depth */
+  }
+  
+  .styled-table thead tr {
+    background-color: #009879; /* Darker shade for header background */
+    color: #ffffff; /* White text color */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .styled-table th,
+  .styled-table td {
+    padding: 12px 15px; /* Add padding to cells */
+  }
+  
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd; /* Add bottom border to each row */
+  }
+  
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3; /* Alternate row background color */
+  }
+  
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879; /* Add a stronger border to the last row */
+  }
+  
+  .styled-table tbody tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
   }
   

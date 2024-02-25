@@ -9,6 +9,5 @@ class UploadFileAdmin(admin.ModelAdmin):
 class GeneratedFileAdmin(admin.ModelAdmin):
     pass
 
-
 admin.site.register(UploadedFile, UploadFileAdmin)
 admin.site.register(GeneratedFile, GeneratedFileAdmin)

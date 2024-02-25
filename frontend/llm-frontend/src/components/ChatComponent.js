@@ -38,7 +38,7 @@ function ChatComponent() {
 
       const response = await axios.post('http://127.0.0.1:8000/api/processllm/', { message: inputValue, fileName: fileName});
       console.log(response)
-      setChatHistory(prevChatHistory => [...prevChatHistory, {text: response.data.message, textType: "System"}]);
+      setChatHistory(prevChatHistory => [...prevChatHistory, {text: response.data.message, df: response.data.df, textType: "System"}]);
       setInputValue(''); // Clear the input box after submission
       
       console.log("Chat history is -=> ")
@@ -98,32 +98,70 @@ function ChatComponent() {
     setSelectedFile(event.target.files[0]);
   };
 
+  const handleApiResponse = (response) => {
+    // Assuming `response` is the object you received from your API
+    const dfData = JSON.parse(response.df);
+    
+    // Construct a table from `dfData`
+    const table = (
+      <table className="styled-table">
+        <thead>
+          <tr>
+            {dfData.columns.map((col, index) => (
+              <th key={index}>{col}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {dfData.data.map((row, index) => (
+            <tr key={index}>
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+    
+    // Set this table to state or use it directly in render as needed
+    return table;
+  };
+
   return (
-    <div>
-      <form class="fileform" onSubmit={handleSubmitFile}>
-        <input id="fileformfield" type="file" onChange={handleFileChange}/>
+    <div class="top-div">
+      <form onSubmit={handleSubmitFile}>
+        <input class="fileform" id="fileformfield" type="file" onChange={handleFileChange}/>
         <button id="fileformbutton" type="submit">Upload File</button>
       </form>
-      <h1>Chat with us</h1>
+      <div class="chat-text">
+        <h1>Chat with us</h1>
+      </div>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       <div className="chat-container">
         {chatHistory.length > 0 ? (
-          chatHistory.map((message, index) => <div key={index}>
-            {message.textType == "user" ? <p>{message.text}</p> : 
-            
-            <div>
-              <a href={message.text}>Download Analysis File</a>
-              <table> 
+          chatHistory.map((message, index) => 
+          <div key={index}>
+              {message.textType == "user" ? <p>USER: {message.text}</p> : 
 
-              </table>
-            </div>
-            } </div>)
+                <div class="chat-interaction">
+                  <div>
+                    <p>Response: </p>
+                    <a href={message.text}>Download Analysis File</a>
+                    {message.df && handleApiResponse(message)} {/* Render the table here if `df` exists */}
+
+                  </div>
+                </div>
+              } 
+            
+          </div>)
           ) : (
               <p>No messages yet</p>
         )}        
       </div>
-
+      
+      <h4>Write a Python program to calculate .... </h4>
       <form class="fieldform" onSubmit={handleSubmit}>
         <input
           class="input-field"

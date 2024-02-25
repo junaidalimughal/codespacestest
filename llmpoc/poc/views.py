@@ -93,7 +93,7 @@ print(df)
         print("Document saved.")
 
         file_url = request.build_absolute_uri(document.file.url)
-        return Response(data={"message": f"{file_url}"})
+        return Response(data={"message": f"{file_url}", "df": local_df.to_json(orient="split")})
         
 class FileUploadView(FormView):
     template_name = 'poc/upload.html'
