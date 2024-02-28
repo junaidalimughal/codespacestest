@@ -36,9 +36,9 @@ function ChatComponent() {
       console.log(chatHistory.length)
       setChatHistory(prevChatHistory => [...prevChatHistory, {text: inputValue, textType: "user"}]);
 
-      const response = await axios.post('http://127.0.0.1:8000/api/processllm/', { message: inputValue, fileName: fileName});
+      const response = await axios.post('http://35.170.228.12:8000/api/processllm/', { message: inputValue, fileName: fileName});
       console.log(response)
-      setChatHistory(prevChatHistory => [...prevChatHistory, {text: response.data.message, df: response.data.df, textType: "System"}]);
+      setChatHistory(prevChatHistory => [...prevChatHistory, {text: response.data.message, df: response.data.df, textType: "System", "execution_status": response.data.execution_status, generated_query: response.data.generated_query}]);
       setInputValue(''); // Clear the input box after submission
       
       console.log("Chat history is -=> ")
@@ -80,7 +80,7 @@ function ChatComponent() {
 
     try {
       // Replace 'YOUR_FILE_ENDPOINT_URL' with your actual API endpoint
-      const response = await axios.post('http://127.0.0.1:8000/api/upload/', formData, {
+      const response = await axios.post('http://35.170.228.12:8000/api/upload/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -132,7 +132,7 @@ function ChatComponent() {
     <div class="top-div">
       <form onSubmit={handleSubmitFile}>
         <input class="fileform" id="fileformfield" type="file" onChange={handleFileChange}/>
-        <button id="fileformbutton" type="submit">Upload File</button>
+        <button class="button-style" id="fileformbutton" type="submit">Upload File</button>
       </form>
       <div class="chat-text">
         <h1>Chat with us</h1>
@@ -151,6 +151,8 @@ function ChatComponent() {
                     <a href={message.text}>Download Analysis File</a>
                     {message.df && handleApiResponse(message)} {/* Render the table here if `df` exists */}
 
+                    <p>Generated Code is</p>  
+                    <p>{message.generated_query}</p>  
                   </div>
                 </div>
               } 
@@ -171,7 +173,7 @@ function ChatComponent() {
           onChange={handleInputChange}
           placeholder="Type your message here..."
         />
-        <button type="submit">Send Message</button>
+        <button class="button-style" type="submit">Send Message</button>
       </form>
     </div>
   );

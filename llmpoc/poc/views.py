@@ -28,6 +28,13 @@ from django.core.files.base import ContentFile
 
 from django.http import HttpResponseRedirect
 import os
+import re
+
+from .apps import tokenizer, model
+
+print("Printing tokenizers and models from views file")
+print(tokenizer)
+print(model)
 
 class FileUploadAPIView(APIView):
     parser_classes = (MultiPartParser, FormParser)
@@ -67,34 +74,80 @@ class ProcessLLMAPI(APIView):
         print(last_file.file)
         print(last_file.file.name)
 
-        df = pd.read_csv(f"media/{last_file.file}")
+        if str(last_file.file).split(".")[-1] == "csv":
+            df = pd.read_csv(f"media/{last_file.file}")
+        else:
+            df = pd.read_excel(f"media/{last_file.file}")
         
+        column_names = ','.join(['`' + col + '`' for col in list(df.columns)])
+        variable_name = f'{df=}'.split('=')[0]
+        
+        prompt = f"Write pandas script to calculate {prompt}. Columns are  {column_names}. Make sure to put \\begin at start of code and \\end at the end of code? And data is already loaded in {variable_name}"
+
+        input_tokens = tokenizer(prompt, return_tensors="pt")
+
+        input_ids = input_tokens["input_ids"]
+        attention_mask = input_tokens["attention_mask"]
+
+        input_tokens = input_tokens.to(0)
+        response = model.generate(**input_tokens, max_length=400, temperature=1.0)
+        decoded = tokenizer.decode(response[0])
+
+        prompt_length = len(prompt) + 4
+        decoded = decoded[prompt_length: ]
+
+        start_pattern = r'\\begin{verbatim}'
+        end_pattern = r'\\end{verbatim}'
+
+        start_index = re.search(start_pattern, decoded)
+        end_index = re.search(end_pattern, decoded)
+
+        start_index = start_index.span()[-1]
+        end_index = end_index.span()[0]
+
+        generated_query = decoded[start_index:end_index]
+
         local_namespace = {"df":df}
-        response = """
-import pandas as pd
-import numpy as np
+        
+        print("Query Generated is -=>")
+        print(generated_query)
 
-df = pd.read_csv("media/data_df.csv")
-print(df.columns)
-print(df)
-"""
-        exec(response, globals(), local_namespace)
-        local_df = local_namespace["df"]
+        execution_status = "Success"
+        try:
+            exec(generated_query, globals(), local_namespace)
+        except: 
+            execution_status = "Failed"
+
+        local_df = local_namespace["df"].copy()
+        other_name_space_elements = [(key, value) for key, value in local_namespace.items() if key != "df"]
+
         new_file_name = f"generated_{fileName}"
-
-        #local_df.to_csv(f"media/temp_files/{new_file_name}.csv", index=False)
         
         document = GeneratedFile()
-        print("Attempting to create the file.")
+        print("Attempting to create the file for df")
         document.file.save(new_file_name, ContentFile(local_df.to_csv(index=False)))
         print("File saved.")
+        file_url = request.build_absolute_uri(document.file.url)
         
         document.save()
-        print("Document saved.")
-
-        file_url = request.build_absolute_uri(document.file.url)
-        return Response(data={"message": f"{file_url}", "df": local_df.to_json(orient="split")})
         
+        response_dict = {"df":(local_df.to_json(orient="split"), "dataframe", file_url), 
+                        "generated_query": (f"{generated_query}", "variable"), 
+                        "execution_status": (execution_status, "variable")}
+        
+        for key, value in other_name_space_elements:
+            if isinstance(value, pd.DataFrame):
+                document = GeneratedFile()
+                print(f"Attempting to create the file {key}")
+                document.file.save(new_file_name, ContentFile(value.to_csv(index=False)))
+                file_url = request.build_absolute_uri(document.file.url)
+                print("File saved.")
+                response_dict[key] = (value.to_json(orient="split"), "dataframe", file_url)
+            else:
+                response_dict[key] = (value, "variable")
+                
+        return Response(data={"message": f"{file_url}", "df": local_df.to_json(orient="split"), "generated_query": f"{generated_query}", "execution_status": execution_status})
+
 class FileUploadView(FormView):
     template_name = 'poc/upload.html'
     form_class = UploadFileForm

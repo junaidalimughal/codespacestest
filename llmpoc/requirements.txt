@@ -1,0 +1,8 @@
+numpy
+pyarrow
+pandas
+transformers
+accelerate
+openpyxl
+djangorestframework
+django-cors-headers

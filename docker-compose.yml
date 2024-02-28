@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  react:
+    build: ./frontend/llm-frontend
+    ports:
+      - "3000:3000"
+    
+  django:
+    build: ./llmpoc
+    command: python manage.py runserver 0.0.0.0:8000 --noreload
+    volumes:
+      - ./llmpoc:/app
+      - /home/ubuntu/mixtral/models--mistralai--Mixtral-8x7B-Instruct-v0.1/:/app/models
+    ports:
+      - "8000:8000"
