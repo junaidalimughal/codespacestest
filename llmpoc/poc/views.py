@@ -69,15 +69,17 @@ class ProcessLLMAPI(APIView):
         prompt = request.data.get("message")
         fileName = request.data.get("fileName")
         print("File path is -=>", latest_file)
-
+        
         last_file = UploadedFile.objects.all().last()
         print(last_file.file)
         print(last_file.file.name)
 
         if str(last_file.file).split(".")[-1] == "csv":
             df = pd.read_csv(f"media/{last_file.file}")
+            print("File Loaded csv")
         else:
             df = pd.read_excel(f"media/{last_file.file}")
+            print("File Loaded excel")
         
         column_names = ','.join(['`' + col + '`' for col in list(df.columns)])
         variable_name = f'{df=}'.split('=')[0]
@@ -96,26 +98,37 @@ class ProcessLLMAPI(APIView):
         prompt_length = len(prompt) + 4
         decoded = decoded[prompt_length: ]
 
-        start_pattern = r'\\begin{verbatim}'
-        end_pattern = r'\\end{verbatim}'
-
-        start_index = re.search(start_pattern, decoded)
-        end_index = re.search(end_pattern, decoded)
-
-        start_index = start_index.span()[-1]
-        end_index = end_index.span()[0]
-
-        generated_query = decoded[start_index:end_index]
-
-        local_namespace = {"df":df}
+        print(decoded)
+        start_pattern = r'\\begin{python}'
+        end_pattern = r'\\end{python}'
         
-        print("Query Generated is -=>")
-        print(generated_query)
-
-        execution_status = "Success"
         try:
+            try:
+                start_index = re.search(start_pattern, decoded)
+                end_index = re.search(end_pattern, decoded)
+            except:
+                start_index = re.search(start_pattern, decoded)
+                end_index = re.search(end_pattern, decoded)
+
+                start_index = re.search(start_pattern, decoded)
+                end_index = re.search(end_pattern, decoded)
+
+            start_index = start_index.span()[-1]
+            end_index = end_index.span()[0]
+
+            generated_query = decoded[start_index:end_index]
+
+            local_namespace = {"df":df}
+            
+            print("Query Generated is -=>")
+            print(generated_query)
+
+            execution_status = "Success"
+            exception_message = ""
+
             exec(generated_query, globals(), local_namespace)
-        except: 
+        except Exception as ex:
+            exception_message = str(ex)
             execution_status = "Failed"
 
         local_df = local_namespace["df"].copy()
@@ -131,10 +144,12 @@ class ProcessLLMAPI(APIView):
         
         document.save()
         
-        response_dict = {"df":(local_df.to_json(orient="split"), "dataframe", file_url), 
-                        "generated_query": (f"{generated_query}", "variable"), 
-                        "execution_status": (execution_status, "variable")}
-        
+        response_dict = {}
+
+        response_dict["df"] = {"data": local_df.to_json(orient="split"), "datatype":"dataframe", "url":file_url}
+        response_dict["generated_query"] = {"data": generated_query, "datatype": "variable", "url": "No URL"}
+        response_dict["execution_status"] = {"data": execution_status, "datatype":"variable", "url": "No URL"}
+
         for key, value in other_name_space_elements:
             if isinstance(value, pd.DataFrame):
                 document = GeneratedFile()
@@ -142,11 +157,13 @@ class ProcessLLMAPI(APIView):
                 document.file.save(new_file_name, ContentFile(value.to_csv(index=False)))
                 file_url = request.build_absolute_uri(document.file.url)
                 print("File saved.")
-                response_dict[key] = (value.to_json(orient="split"), "dataframe", file_url)
+                response_dict[key] = {"data": value.to_json(orient="split"), "datatype": "dataframe", "url": file_url}
             else:
-                response_dict[key] = (value, "variable")
-                
-        return Response(data={"message": f"{file_url}", "df": local_df.to_json(orient="split"), "generated_query": f"{generated_query}", "execution_status": execution_status})
+                response_dict[key] = {"data": value, "datatype":"variable", "url": "No URL"}
+        
+        print("Resposne is -> \n")
+        print(response_dict)
+        return Response(data=response_dict)
 
 class FileUploadView(FormView):
     template_name = 'poc/upload.html'

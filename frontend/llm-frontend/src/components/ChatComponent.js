@@ -19,6 +19,31 @@ function ChatComponent() {
     setInputValue(event.target.value);
   };
 
+  // Example function to process incoming data and update state
+  const processAndUpdateChatHistory = (incomingDataArray) => {
+    console.log("Incoming data -> ")
+    console.log(incomingDataArray)
+    const newData = incomingDataArray.map(dataItem => {
+      // Assuming you want to extract and transform certain pieces of information
+      // from each item in the incoming data array
+      // Modify this based on the actual structure of your data and what you want to extract
+      return {
+        dfData: dataItem.data, // Assuming df.data is the piece of information you want
+        dataType: dataItem.datatype,
+        url: dataItem.url,
+        messageType: "System",
+        // Add more fields as needed
+      };
+
+    });
+
+    console.log("New data is -> ")
+    console.log(newData)
+    // Update your React state with this new data
+    setChatHistory(prevChatHistory => [...prevChatHistory, ...newData]);
+  };
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -38,7 +63,14 @@ function ChatComponent() {
 
       const response = await axios.post('http://35.170.228.12:8000/api/processllm/', { message: inputValue, fileName: fileName});
       console.log(response)
-      setChatHistory(prevChatHistory => [...prevChatHistory, {text: response.data.message, df: response.data.df, textType: "System", "execution_status": response.data.execution_status, generated_query: response.data.generated_query}]);
+      
+      const dataArray = response.data;
+
+      console.log(dataArray)
+      // Call your function with the data array
+      //setChatHistory(prevChatHistory => [...prevChatHistory, {text: response.data.message, df: response.data.df, textType: "System", "execution_status": response.data.execution_status, generated_query: response.data.generated_query}]);
+      processAndUpdateChatHistory(dataArray);
+      
       setInputValue(''); // Clear the input box after submission
       
       console.log("Chat history is -=> ")

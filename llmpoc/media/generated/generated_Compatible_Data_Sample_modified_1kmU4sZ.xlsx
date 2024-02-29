@@ -1,0 +1,13 @@
+ProjectName,AssignedBudget,ProjectManager,Description,Month,MonthlyBudget,Dependencies,ProjectStartDate,ProjectEndDate,Month.1
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Jan,4200,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,01-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Feb,4000,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,02-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Mar,3900,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,03-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Apr,3800,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,04-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-May,3700,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,05-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Jun,3600,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,06-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Jul,3500,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,07-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Aug,3400,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,08-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Sep,3300,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,09-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Oct,3200,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,10-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Nov,3100,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,11-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Dec,3000,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,12-01-2023

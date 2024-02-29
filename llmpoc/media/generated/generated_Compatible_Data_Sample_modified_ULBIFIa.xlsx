@@ -1,0 +1,121 @@
+ProjectName,AssignedBudget,ProjectManager,Description,Month,MonthlyBudget,Dependencies,ProjectStartDate,ProjectEndDate,Month.1
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Jan,4200,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,01-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Feb,4000,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,02-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Mar,3900,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,03-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Apr,3800,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,04-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-May,3700,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,05-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Jun,3600,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,06-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Jul,3500,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,07-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Aug,3400,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,08-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Sep,3300,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,09-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Oct,3200,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,10-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Nov,3100,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,11-01-2023
+Cloud Migration,50000,John ,Moving data services to cloud platforms.,23-Dec,3000,"Cloud Security Protocol, Cloud Migration, Customer Relationship Enhancement",2023-12-11,2024-12-05,12-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Jan,4200,Rebranding Campaign,2023-12-11,2024-12-05,01-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Feb,2500,Rebranding Campaign,2023-12-11,2024-12-05,02-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Mar,1300,Rebranding Campaign,2023-12-11,2024-12-05,03-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Apr,2100,Rebranding Campaign,2023-12-11,2024-12-05,04-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-May,5800,Rebranding Campaign,2023-12-11,2024-12-05,05-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Jun,1700,Rebranding Campaign,2023-12-11,2024-12-05,06-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Jul,850,Rebranding Campaign,2023-12-11,2024-12-05,07-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Aug,2900,Rebranding Campaign,2023-12-11,2024-12-05,08-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Sep,420,Rebranding Campaign,2023-12-11,2024-12-05,09-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Oct,3300,Rebranding Campaign,2023-12-11,2024-12-05,10-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Nov,640,Rebranding Campaign,2023-12-11,2024-12-05,11-01-2023
+Rebranding Campaign,30000,Jane ,Launching a new brand identity.,23-Dec,950,Rebranding Campaign,2023-12-11,2024-12-05,12-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Jan,4000,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,01-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Feb,2450,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,02-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Mar,1280,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,03-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Apr,2080,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,04-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-May,5700,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,05-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Jun,1670,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,06-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Jul,840,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,07-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Aug,2880,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,08-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Sep,415,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,09-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Oct,3250,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,10-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Nov,635,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,11-01-2023
+Talent Acquisition System,15000,Alice,Improving the recruitment process.,23-Dec,940,"Talent Acquisition System, Rebranding Campaign",2023-12-11,2024-12-05,12-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Jan,3900,Supply Chain Optimization,2023-12-11,2024-12-05,01-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Feb,2400,Supply Chain Optimization,2023-12-11,2024-12-05,02-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Mar,1260,Supply Chain Optimization,2023-12-11,2024-12-05,03-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Apr,2060,Supply Chain Optimization,2023-12-11,2024-12-05,04-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-May,5600,Supply Chain Optimization,2023-12-11,2024-12-05,05-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Jun,1640,Supply Chain Optimization,2023-12-11,2024-12-05,06-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Jul,830,Supply Chain Optimization,2023-12-11,2024-12-05,07-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Aug,2860,Supply Chain Optimization,2023-12-11,2024-12-05,08-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Sep,410,Supply Chain Optimization,2023-12-11,2024-12-05,09-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Oct,3200,Supply Chain Optimization,2023-12-11,2024-12-05,10-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Nov,630,Supply Chain Optimization,2023-12-11,2024-12-05,11-01-2023
+Financial System Upgrade,25000,Bob ,Upgrading the financial reporting system.,23-Dec,930,Supply Chain Optimization,2023-12-11,2024-12-05,12-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Jan,3800,Quality Control Automation,2023-12-11,2024-12-05,01-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Feb,2350,Quality Control Automation,2023-12-11,2024-12-05,02-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Mar,1240,Quality Control Automation,2023-12-11,2024-12-05,03-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Apr,2040,Quality Control Automation,2023-12-11,2024-12-05,04-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-May,5500,Quality Control Automation,2023-12-11,2024-12-05,05-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Jun,1610,Quality Control Automation,2023-12-11,2024-12-05,06-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Jul,820,Quality Control Automation,2023-12-11,2024-12-05,07-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Aug,2840,Quality Control Automation,2023-12-11,2024-12-05,08-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Sep,405,Quality Control Automation,2023-12-11,2024-12-05,09-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Oct,3150,Quality Control Automation,2023-12-11,2024-12-05,10-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Nov,625,Quality Control Automation,2023-12-11,2024-12-05,11-01-2023
+New Product Development,70000,Carol ,Developing a new tech product.,23-Dec,920,Quality Control Automation,2023-12-11,2024-12-05,12-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Jan,3700,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,01-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Feb,2300,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,02-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Mar,1220,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,03-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Apr,2020,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,04-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-May,5400,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,05-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Jun,1580,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,06-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Jul,810,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,07-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Aug,2820,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,08-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Sep,400,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,09-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Oct,3100,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,10-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Nov,620,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,11-01-2023
+Customer Feedback System,20000,Eve ,Implementing a new customer feedback tool.,23-Dec,910,"New Product Development, Customer Feedback System, Financial System Upgrade",2023-12-11,2024-12-05,12-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Jan,3600,Compliance Automation,2023-12-11,2024-12-05,01-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Feb,2250,Compliance Automation,2023-12-11,2024-12-05,02-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Mar,1200,Compliance Automation,2023-12-11,2024-12-05,03-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Apr,2000,Compliance Automation,2023-12-11,2024-12-05,04-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-May,5300,Compliance Automation,2023-12-11,2024-12-05,05-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Jun,1550,Compliance Automation,2023-12-11,2024-12-05,06-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Jul,800,Compliance Automation,2023-12-11,2024-12-05,07-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Aug,2800,Compliance Automation,2023-12-11,2024-12-05,08-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Sep,395,Compliance Automation,2023-12-11,2024-12-05,09-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Oct,3050,Compliance Automation,2023-12-11,2024-12-05,10-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Nov,615,Compliance Automation,2023-12-11,2024-12-05,11-01-2023
+Supply Chain Optimization,35000,Frank ,Optimizing the supply chain for efficiency.,23-Dec,900,Compliance Automation,2023-12-11,2024-12-05,12-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Jan,3500,Quality Control Automation,2023-12-11,2024-12-05,01-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Feb,2200,Quality Control Automation,2023-12-11,2024-12-05,02-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Mar,1180,Quality Control Automation,2023-12-11,2024-12-05,03-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Apr,1980,Quality Control Automation,2023-12-11,2024-12-05,04-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-May,5200,Quality Control Automation,2023-12-11,2024-12-05,05-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Jun,1520,Quality Control Automation,2023-12-11,2024-12-05,06-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Jul,790,Quality Control Automation,2023-12-11,2024-12-05,07-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Aug,2780,Quality Control Automation,2023-12-11,2024-12-05,08-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Sep,390,Quality Control Automation,2023-12-11,2024-12-05,09-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Oct,3000,Quality Control Automation,2023-12-11,2024-12-05,10-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Nov,610,Quality Control Automation,2023-12-11,2024-12-05,11-01-2023
+Compliance Automation,90000,Grace ,Automating compliance processes.,23-Dec,890,Quality Control Automation,2023-12-11,2024-12-05,12-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Jan,3400,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,01-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Feb,2150,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,02-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Mar,1160,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,03-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Apr,1960,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,04-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-May,5100,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,05-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Jun,1490,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,06-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Jul,780,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,07-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Aug,2760,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,08-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Sep,385,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,09-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Oct,2950,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,10-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Nov,605,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,11-01-2023
+Quality Control Automation,40000,Harry ,Automating quality control processes.,23-Dec,880,"Shipping Process Improvement, Compliance Automation",2023-12-11,2024-12-05,12-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Jan,3300,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,01-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Feb,2100,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,02-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Mar,1140,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,03-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Apr,1940,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,04-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-May,5000,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,05-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Jun,1460,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,06-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Jul,770,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,07-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Aug,2740,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,08-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Sep,380,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,09-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Oct,2900,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,10-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Nov,600,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,11-01-2023
+Shipping Process Improvement,35000,Jack ,Improving the efficiency of shipping operations.,23-Dec,870,"Supply Chain Optimization, Quality Control Automation",2023-12-11,2024-12-05,12-01-2023
